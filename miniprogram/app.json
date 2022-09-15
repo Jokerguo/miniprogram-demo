@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/user/user",
+    "pages/demo/demo"
+  ],
+  "subPackages": [
+    {
+        "root": "sub-demo",
+        "pages": [
+            "pages/index/index"
+        ]
+    }
+  ],
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "军师联盟",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#006afe",
+    "color": "#666666",
+    "list": [
+        {
+            "pagePath": "pages/index/index",
+            "text": "首页"
+        },
+        {
+            "pagePath": "pages/user/user",
+            "text": "订单"
+        }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

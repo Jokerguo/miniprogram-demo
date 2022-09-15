@@ -1,0 +1,8 @@
+<view>
+  <text class="xxx">pages/login/login.wxml</text>
+  <navigator open-type="navigate" url="/sub-demo/pages/index/index" bind:tap="handleEvent">分包demo</navigator>
+  <navigator open-type="switchTab" url="/pages/index/index">首页</navigator>
+  <navigator open-type="switchTab" url="/pages/user/user">log</navigator>
+  <button bind:tap="login">登录</button>
+  <i class="iconfont icon-rename"></i>
+</view>

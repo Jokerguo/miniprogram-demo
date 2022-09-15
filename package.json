@@ -1,0 +1,16 @@
+{
+  "name": "jslm",
+  "version": "1.0.0",
+  "description": "军师联盟",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@clevok/event": "0.1.0",
+    "dayjs": "^1.11.5"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^2.8.3-1"
+  }
+}
