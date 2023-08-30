@@ -1,0 +1,81 @@
+<wxs
+    src="/wxs/format.wxs"
+    module="wxs"
+/>
+<view class="client-wrap">
+    <scroll-view
+        class="content-scroll"
+        scroll-y
+        enable-flex
+        bindscrolltolower='pullBottomLoad'
+        refresher-enabled
+        refresher-default-style='black'
+        bindrefresherrefresh='pullRefresh'
+        refresher-triggered="{{refreshStatus}}"
+        lower-threshold='200'
+    >
+        <block wx:if="{{showList.length&&!loadStatus.isEmpty}}">
+            <block
+                wx:for="{{showList}}"
+                wx:for-item="infoList"
+                wx:key="index"
+            >
+                <block wx:if="{{infoList && infoList.list &&  infoList.list.length }}">
+                    <!-- 月份 -->
+                    <view class="scroll-item">
+                        <view class="scroll-header">
+                            <PickerSelect
+                                month="{{infoList.month}}"
+                                rightText="收入:￥{{infoList.count}}"
+                                catch:handleDataChange="handleDataChange"
+                            />
+                        </view>
+                        <view
+                            class="scroll-content"
+                            data-index='{{index}}'
+                        >
+                            <view class="infos">
+                                <block
+                                    wx:for="{{infoList.list}}"
+                                    wx:key="id"
+                                >
+                                    <view class="info-item">
+                                        <view class="flex justify-between align-center">
+                                            <view>
+                                                <view class="info-header">补充快递收入</view>
+                                                <view class="info-date">
+                                                    {{wxs.getTime(item.incomeTime)}}
+                                                </view>
+                                            </view>
+                                            <view>+￥{{item.incomeAmount}}</view>
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </block>
+        <block wx:elif="{{loadStatus.isEmpty&&showList.length}}">
+            <view class="scroll-item">
+                <view class="scroll-header">
+                    <PickerSelect
+                        month="{{showList[0].month}}"
+                        rightText="收入:￥{{showList[0].count}}"
+                        catch:handleDataChange="handleDataChange"
+                    />
+                </view>
+            </view>
+        </block>
+        <c-load-status
+            loadStatus="{{loadStatus}}"
+            noLoad="{{true}}"
+            showPull="{{false}}"
+            bind:searchReset="Reset"
+        />
+        <view class="bottom-safe" />
+    </scroll-view>
+</view>
+
+

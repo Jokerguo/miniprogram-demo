@@ -1,55 +1,66 @@
 {
     "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-    "packOptions": {
-        "ignore": [],
-        "include": []
-    },
     "miniprogramRoot": "miniprogram/",
     "compileType": "miniprogram",
-    "projectname": "ts-sass-demo",
     "setting": {
-        "useCompilerPlugins": [
-            "typescript",
-            "sass"
-        ],
+        "urlCheck": false,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": false,
+        "coverView": true,
+        "nodeModules": false,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": true,
+        "scopeDataCheck": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": false,
+        "lazyloadPlaceholderEnable": false,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
             "outputPath": ""
         },
+        "useIsolateContext": true,
+        "userConfirmedBundleSwitch": false,
         "packNpmManually": true,
         "packNpmRelationList": [
             {
                 "packageJsonPath": "./package.json",
-                "miniprogramNpmDistDir": "./miniprogram/"
+                "miniprogramNpmDistDir": "./miniprogram"
             }
         ],
-        "coverView": true,
-        "es6": true,
-        "postcss": true,
-        "lazyloadPlaceholderEnable": false,
-        "preloadBackgroundData": false,
-        "minified": true,
-        "autoAudits": false,
-        "uglifyFileName": false,
-        "uploadWithSourceMap": true,
-        "enhance": true,
-        "showShadowRootInWxmlPanel": true,
         "minifyWXSS": true,
-        "useStaticServer": true,
-        "showES6CompileOption": false,
-        "checkInvalidKey": true,
         "disableUseStrict": false,
-        "minifyWXML": true
+        "minifyWXML": true,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": [
+            "typescript",
+            "sass"
+        ],
+        "ignoreUploadUnusedFiles": true
     },
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
-    "condition": {},
     "srcMiniprogramRoot": "miniprogram/",
-    "appid": "wx56665e73ad21ec6c",
-    "libVersion": "2.26.0",
     "editorSetting": {
-        "tabIndent": "insertSpaces",
+        "tabIndent": "auto",
         "tabSize": 4
-    }
+    },
+    "libVersion": "2.26.0",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "appid": "wx300244d93cf5a30e",
+    "projectname": "%E5%86%9B%E5%B8%88%E8%81%94%E7%9B%9F",
+    "condition": {}
 }

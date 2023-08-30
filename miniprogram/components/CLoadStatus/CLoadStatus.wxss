@@ -1,0 +1,49 @@
+.text--center {
+    text-align: center;
+}
+.text--grey {
+    color: #999999;
+}
+.py-3 {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+.fxy--center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hide {
+    opacity: 0;
+}
+.v-load-status {
+    position: relative;
+}
+.status-child {
+    display: none;
+    pointer-events: none;
+    opacity: 0;
+    text-align: center;
+    vertical-align: middle;
+    transition: opacity 0.3s;
+}
+.isLoading > .isLoading,
+.isEnd > .isEnd,
+.isError > .isError,
+.isEmpty > .isEmpty,
+.isBegin > .isBegin.isChange {
+    display: block;
+    pointer-events: auto;
+    opacity: 1;
+}
+.isEmpty{
+    /* padding-top: 10%; */
+}
+.isError .error-text {
+    margin-top: 18px;
+    height: 100px;
+}
+
+.inline {
+    display: inline;
+}

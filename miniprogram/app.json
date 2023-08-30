@@ -1,39 +1,44 @@
 {
-  "pages": [
-    "pages/login/login",
-    "pages/index/index",
-    "pages/user/user",
-    "pages/demo/demo"
-  ],
-  "subPackages": [
-    {
-        "root": "sub-demo",
-        "pages": [
-            "pages/index/index"
-        ]
-    }
-  ],
-
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "军师联盟",
-    "navigationBarTextStyle": "black"
-  },
-  "tabBar": {
-    "selectedColor": "#006afe",
-    "color": "#666666",
-    "list": [
+    "pages": ["pages/home/home", "pages/login/login", "pages/user/user"],
+    "subPackages": [
         {
-            "pagePath": "pages/index/index",
-            "text": "首页"
+            "root": "sub-share",
+            "pages": ["pages/qrcodeInvite/qrcodeInvite"]
         },
         {
-            "pagePath": "pages/user/user",
-            "text": "订单"
+            "root": "sub-second-level",
+            "pages": ["pages/index/index", "pages/detail/detail"]
+        },
+        {
+            "root": "sub-user-setting",
+            "pages": ["pages/index/index"]
+        },
+        {
+            "root": "sub-user-info",
+            "pages": ["pages/client-info/client-info"]
+        },
+        {
+            "root": "sub-money-info",
+            "pages": ["pages/money-info/money-info", "pages/order-history/order-history", "pages/withdraw-history/withdraw-history", "pages/income-history/income-history"]
         }
-    ]
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "军师联盟",
+        "navigationBarTextStyle": "black",
+        "backgroundColor": "#fff"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "networkTimeout": {
+        "request": 15000,
+        "uploadFile": 15000
+    },
+    "resolveAlias": {
+        "@/*": "/*",
+        "@Tool/*": "tools/*",
+        "@Api/*": "api/*",
+        "@Component/*": "component/*"
+    }
 }

@@ -1,0 +1,60 @@
+<wxs src="/wxs/format.wxs" module="wxs" />
+<view class="container">
+  <!-- 信息 -->
+  <view class="card info">
+    <view class="item name">
+      <view class="left">
+        <block wx:if="{{showInput}}">
+          <input type="text" maxlength="15" class="input" focus="{{true}}" value="{{editName}}" bindinput="handleInput" bindblur="handleBlur" />
+        </block>
+        <block wx:else>
+          {{memberInfo.name}}
+          <i class="iconfont icon-bianji" bind:tap="handleEdit" />
+        </block>
+      </view>
+      <view class="right c-blue" bind:tap="handleAction">操作</view>
+    </view>
+    <view class="b-line mb-12"></view>
+    <view class="item">
+      <view class="left">分组</view>
+      <view class="right">{{memberInfo.groupName || '--'}}</view>
+    </view>
+    <view class="item">
+      <view class="left">联盟code</view>
+      <view class="right">{{memberInfo.code}}</view>
+    </view>
+    <view class="item">
+      <view class="left">手机号码</view>
+      <view class="right">
+        {{showPhone ? memberInfo.cellphone : wxs.encPhone(memberInfo.cellphone)}}
+        <i class="iconfont icon-{{showPhone ? 'kejian' : 'bukejian'}}" bind:tap="toggleShow"></i>
+      </view>
+    </view>
+  </view>
+  <!-- 数据模块 -->
+  <view class="card promote-info mt-12">
+    <view class="title flex justify-between pr-12 pb-12">
+      <view>推广数据</view>
+      <picker mode="date" value="{{wxs.setMonth(time)}}}" bindchange="timeChange" bindcancel="cancelTime" fields="month" start="2020-01-00" end="{{wxs.getNowMonth()}}">
+        <view bind:tap="selectTime" class="allow">
+          {{time}}
+          <i class="iconfont icon-xiala fs-24 {{isSelecting ? 'rotate' : ''}}"></i>
+        </view>
+      </picker>
+    </view>
+    <view class="info-wrapper pr-12 flex">
+      <view class='item flex-1' bind:tap="linkTo" mark:index="{{1}}">
+        <view class="title">推广客户数</view>
+        <view class="count">{{promoteInfo.promotionCustomersNum}}</view>
+      </view>
+      <view class='item flex-1' bind:tap="linkTo" mark:index="{{2}}">
+        <view class="title">推广订单数</view>
+        <view class="count">{{promoteInfo.promotionOrder}}</view>
+      </view>
+      <view class='item flex-1' bind:tap="linkTo" mark:index="{{3}}">
+        <view class="title">推广收入/元</view>
+        <view class="count">{{promoteInfo.promotionIncome}}</view>
+      </view>
+    </view>
+  </view>
+</view>

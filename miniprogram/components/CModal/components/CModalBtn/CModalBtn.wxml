@@ -1,0 +1,3 @@
+<view class="{{className}}" hover-class="child-hover" bind:tap="$click" mark:index="{{index}}">
+    <slot></slot>
+</view>

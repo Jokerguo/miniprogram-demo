@@ -1,0 +1,130 @@
+//补零
+function padLeftZero(time) {
+    time = time + '';
+    return ('00' + time).slice(time.length);
+}
+
+function getNowMonth() {
+    var now = getDate();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    return year + '-' + month;
+}
+/* 月年 - 年月 */
+function setMonth(value) {
+    if (!value) return '';
+    value += '';
+    var res = value.replace(getRegExp('(d+)月(d+)年', 'g'), '$2-$1');
+    return res;
+}
+/* 隐藏字符 */
+var sub = function (str, frontLen, endLen) {
+    //str：要进行隐藏的变量  frontLen: 前面需要保留几位    endLen: 后面需要保留几位
+    var len = str.length - frontLen - endLen;
+    var xing = '';
+    for (var i = 0; i < len; i++) {
+        xing += '*';
+    }
+    return str.substring(0, frontLen) + xing + str.substring(str.length - endLen);
+};
+//时间戳 转换成 2020-03-18
+function getTime(date) {
+    var date = getDate(date * 1000);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    return [year, month, day].map(formatNumber).join('-');
+}
+
+function formatNumber(n) {
+    n = n.toString();
+    return n[1] ? n : '0' + n;
+}
+//格式化时间戳 2020-03-18 18:00
+function getTimeDetail(date) {
+    var date = getDate(date * 1000);
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':');
+}
+
+//显示钱
+function showMoney(money) {
+    if (!money && +money !== 0) {
+        return '';
+    }
+    if (+money === 0) {
+        return '￥' + money;
+    } else if (money < 0) {
+        return '-￥' + money;
+    } else {
+        return '+￥' + money;
+    }
+}
+
+// 收入比较
+function compare(money, isLoading = false) {
+    if (isLoading) return '--';
+    return money === '--' ? '--' : +money === 0 ? '持平' : money + '%';
+}
+// 收入颜色
+function compareColor(money) {
+    return +money === 0 || money === '--' ? '' : +money > 0 ? 'c-green' : 'c-red';
+}
+
+// 加密手机号
+function encPhone(phone) {
+    if (!phone) return;
+    return phone.substring(0, phone.length - 8) + '****' + phone.substring(phone.length - 4);
+}
+
+//获取提现状态
+function getWithdrawStatus(status, content = '') {
+    switch (status) {
+        case 0:
+            return '审核中';
+        case 1:
+            return '提现中';
+        case 2:
+            return getTime(content); //提现成功
+        case 3:
+            return '提现失败';
+        case 4:
+            return '审核拒绝:' + (content || '');
+    }
+}
+
+//处理头像url
+function handleAvator(url) {
+    if (!url) return 'https://img1.fhd001.com/fhdowx/images/default.jpg';
+    return url;
+}
+
+function getGrowText(grow) {
+    if (grow === 1) return '较昨日';
+    if (grow === -1) return '较上月';
+    if (grow === -2) return false;
+    if (grow === -3) return '较前一个月';
+    if (typeof grow === 'number') {
+        return '较前' + grow + '日';
+    }
+    return false;
+}
+
+module.exports = {
+    getNowMonth: getNowMonth,
+    setMonth: setMonth,
+    sub: sub,
+    getTime: getTime,
+    showMoney: showMoney,
+    compare: compare,
+    compareColor: compareColor,
+    getTimeDetail: getTimeDetail,
+    getWithdrawStatus: getWithdrawStatus,
+    encPhone: encPhone,
+    handleAvator: handleAvator,
+    getGrowText: getGrowText,
+};

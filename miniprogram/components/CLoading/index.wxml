@@ -1,0 +1,19 @@
+<view wx:if="{{isLoading}}">
+      <view class="loading_wrap">
+            <view class="loading">
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+                  <view class="loading__item"></view>
+            </view>
+            <view class="text">{{loadingText}}</view>
+      </view>
+</view>

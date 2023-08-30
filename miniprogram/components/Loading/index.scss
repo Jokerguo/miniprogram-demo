@@ -1,0 +1,32 @@
+.zh-loading {
+  padding: 50rpx 0;
+  text-align: center;
+}
+.zh-loading .icon-jiazai {
+  display: inline-block;
+  font-size: 70rpx;
+  color: #999;
+  -webkit-animation: rotate 3s 0s infinite linear;
+          animation: rotate 3s 0s infinite linear;
+}
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.zh-loading .zh-desc {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  color: #999;
+}

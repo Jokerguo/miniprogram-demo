@@ -467,7 +467,9 @@ declare namespace WechatMiniprogram.Component {
 
     interface OtherOption {
         /** 类似于mixins和traits的组件间代码复用机制，参见 [behaviors](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/behaviors.html) */
-        behaviors: Behavior.BehaviorIdentifier[]
+        behaviors: Behavior.BehaviorIdentifier[],
+        //自己添加的
+        computed:any,
         /**
          * 组件数据字段监听器，用于监听 properties 和 data 的变化，参见 [数据监听器](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/observer.html)
          *

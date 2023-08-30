@@ -1,0 +1,34 @@
+<view class="text--center text--grey v-load-status {{cssName}} fs-small " style="padding: 36rpx 0;">
+    <view class="status-child isLoading">
+        <block>
+            <c-loading isLoading='{{loadStatus.isLoading}}' />
+        </block>
+    </view>
+    <view class="status-child isError" bind:tap="reLoad">
+        <block wx:if="{{!_loadSlot.isError}}">
+            <!-- <image src="https://mmbiz.qpic.cn/mmbiz_png/8T1icmGDtgBiaXTVj7RkiajwAqKibb6rbsFAjoDpm74I7AjGmlwgWNCkCbPsbkHsqnFb6J2V5iazn5SYMeF9Wicgw9pw/0?wx_fmt=png" class="empty-img" mode="heightFix"></image>
+            <view class="error-text">{{_loadText.isError}}</view> -->
+            <CEmpty isError='{{loadStatus.isError}}' errorText="{{_loadText.isError}}"></CEmpty>
+        </block>
+        <block wx:else>
+            <slot name="isError" />
+        </block>
+    </view>
+    <view class="status-child isEmpty">
+        <block wx:if="{{!_loadSlot.isEmpty}}">
+            <CEmpty isEmpty='{{loadStatus.isEmpty}}' emptyText='{{_loadText.isEmpty}}'></CEmpty>
+        </block>
+        <block wx:else>
+            <slot name="isEmpty" />
+        </block>
+    </view>
+    <view class="status-child isEnd">
+        <block wx:if="{{!_loadSlot.isEnd}}">{{_loadText.isEnd}}</block>
+        <block wx:else>
+            <slot name="isEnd" />
+        </block>
+    </view>
+    <view class="status-child isBegin {{isChange?'isChange':''}}" bind:tap="reLoad" wx:if="{{showPull}}">
+        {{isChange?'上拉加载':''}}
+    </view>
+</view>

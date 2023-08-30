@@ -1,0 +1,21 @@
+<view class="content {{topBorder?'top-border':''}}">
+    <view class="tab-view">
+        <view
+            class="tab {{item.key == currentTab?'color_red':''}}"
+            style="width:calc(100% /{{titleArr.length}})"
+            wx:for="{{titleArr}}"
+            wx:key="index"
+            bind:tap="selectType"
+            data-index="{{item.key}}"
+        >
+            <view class="label">{{item.text}}
+                {{item.value}}</view>
+        </view>
+    </view>
+    <view
+        class="bottom-line"
+        style="transform:translateX({{left}});"
+    />
+</view>
+
+

@@ -1,0 +1,6 @@
+{
+  "usingComponents": { 
+    "Inform": "/components/Inform/index"
+  },
+  "enablePullDownRefresh": true
+}

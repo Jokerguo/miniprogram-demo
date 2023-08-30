@@ -1,0 +1,14 @@
+.empty-wrap .empty-img {
+    height: 120px;
+    width: 120px;
+}
+.empty-wrap{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.show-text{
+    color: #999;
+}

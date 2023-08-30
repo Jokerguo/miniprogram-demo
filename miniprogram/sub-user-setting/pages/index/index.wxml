@@ -1,0 +1,60 @@
+<wxs src="/wxs/format.wxs" module="wxs" />
+<view class="user-setting page-wrap">
+    <!-- 一级联盟设置 -->
+    <block wx:if='{{level===1}}'>
+        <view class="setting-card bottom-position">
+            <view class="card-item">
+                <view class="label">登录账号</view>
+                <view class="content">{{settingInfo.code || '--'}}</view>
+            </view>
+            <view class="card-item">
+                <view class="label">手机号</view>
+                <view class="content">{{settingInfo.cellphone || '--'}}</view>
+            </view>
+            <view class="card-item">
+                <view class="label">身份证号</view>
+                <view class="content">
+                    {{settingInfo.bankcard?wxs.sub(settingInfo.identityCard,3,4):'--'}}
+                </view>
+            </view>
+            <view class="card-item">
+                <view class="label">银行卡号</view>
+                <view class="content">
+                    {{settingInfo.bankcard?wxs.sub(settingInfo.bankcard,4,4):'--'}}
+                </view>
+            </view>
+            <view class="card-item">
+                <view class="label">开户行</view>
+                <view class="content">{{settingInfo.bankDeposit || '--'}}</view>
+            </view>
+        </view>
+    </block>
+    <!-- 二级联盟设置 -->
+    <block wx:else>
+        <view class="setting-card bottom-position">
+            <view class="card-item">
+                <view class="label">登录账号</view>
+                <view class="content">{{settingInfo.code || '--'}}</view>
+            </view>
+            <view class="card-item">
+                <view class="label">手机号</view>
+                <view class="content">{{settingInfo.cellphone || '--'}}</view>
+            </view>
+        </view>
+    </block>
+    <view class="setting-card">
+        <view class="card-item">
+            <view class="label">创建时间</view>
+            <view class="content">
+                {{settingInfo.createTime ? wxs.getTimeDetail(settingInfo.createTime) : "--"}}
+            </view>
+        </view>
+        <view class="card-item">
+            <view class="label">版本号</view>
+            <view class="content">v{{version}}</view>
+        </view>
+    </view>
+    <view class="handle">
+        <button class="logout" bindtap='handleLogout'>退出登录</button>
+    </view>
+</view>

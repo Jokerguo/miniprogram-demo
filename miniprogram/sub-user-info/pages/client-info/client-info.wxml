@@ -1,0 +1,98 @@
+<wxs src="/wxs/format.wxs" module="wxs" />
+<view class="client-wrap">
+    <view class="header">
+        <CSearchBox placeholder='微信昵称/备注' searchKey="{{queryStr}}" bind:handleIpt='handleIpt' bind:handleSearch='handleSearch' />
+        <view class="total-count">共{{params.total}}个客户</view>
+    </view>
+    <scroll-view class="content-scroll" scroll-y enable-flex bindscrolltolower='pullBottomLoad' refresher-enabled refresher-default-style='black' bindrefresherrefresh='pullRefresh' refresher-triggered="{{refreshStatus}}">
+        <block wx:if="{{showList.length&&!loadStatus.isEmpty}}">
+            <block wx:for="{{showList}}" wx:for-item="infoList" wx:key="index">
+                <block wx:if="{{infoList && infoList.list &&  infoList.list.length }}">
+                    <!-- 月份 -->
+                    <PickerSelect month="{{infoList.month}}" catch:handleDataChange="handleDataChange" />
+                    <view class="scroll-item" data-index='{{index}}'>
+                        <view class="infos">
+                            <block wx:for="{{infoList.list}}" wx:key="subIndex" wx:for-index="subIndex">
+                                <view class="info-item">
+                                    <view class="info-header">
+                                        <view class="user-info flex">
+                                            <image class="avator" src="{{item.avatar||'https://mmbiz.qpic.cn/mmbiz_png/8T1icmGDtgBgb69HZpTPROaZLkP6Gx9CMVHNadQeibDZTxlb8DCWJcz6v4xhUR03fb0Z6EGtdlIdWVD780cZAJXw/0?wx_fmt=png'}}" mode="aspectFill" />
+                                            <view class="flex-1 info-header-wrap">
+                                                <view class="flex flex-1 nick-wrap">
+                                                    <block wx:if="{{!item.showUpdateNick}}">
+                                                        <view class="flex nick-wrap-inner">
+                                                            <block wx:if="{{item.remark}}">
+                                                                <view class="remark-a {{item.showAllNick?'show-all':''}}" mark:index="{{index}}" mark:subIndex="{{subIndex}}" mark:item="{{item}}" bind:tap="showAllNick">
+                                                                    <view class="remark-a-con">
+                                                                        {{item.remark}}
+                                                                    </view>
+                                                                </view>
+                                                                <view class="nick-a">
+                                                                    ({{item.nick}})
+                                                                </view>
+                                                            </block>
+                                                            <block wx:else>
+                                                                <view class="nick">
+                                                                    {{item.nick}}
+                                                                </view>
+                                                            </block>
+                                                            <view class='edit' bind:tap="showUpdateText" mark:index="{{index}}" mark:subIndex="{{subIndex}}" mark:item="{{item}}" wx:if="{{level===2}}">
+                                                                <i class="iconfont icon-bianji" />
+                                                                备注
+                                                            </view>
+                                                        </view>
+                                                    </block>
+                                                    <block wx:else>
+                                                        <view class="flex edit-box flex-1">
+                                                            <input focus="{{true}}" class="edit-ipt flex-1" type="text" value='{{editRemark}}' bind:input="handleRemarkIpt" bind:blur="handleRemarkComfirm" mark:index="{{index}}" mark:subIndex="{{subIndex}}" mark:item="{{item}}" maxlength="15" cursor-spacing="100rpx" />
+                                                            <view class="edit-button" catch:tap="handleRemarkComfirm" mark:index="{{index}}" mark:subIndex="{{subIndex}}" mark:item="{{item}}">
+                                                                保存
+                                                            </view>
+                                                        </view>
+                                                    </block>
+                                                </view>
+                                                <view class="time">{{item.time}}</view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="info-content">
+                                        <block wx:if="{{level===2}}">
+                                            <view class='info-content-item'>
+                                                <view class="title">推广订单数</view>
+                                                <view>{{item.promoteOrderNum}}</view>
+                                            </view>
+                                            <view class='info-content-item'>
+                                                <view class="title">推广收入/元</view>
+                                                <view>{{item.promoteIncome}}</view>
+                                            </view>
+                                            <view class='info-content-item'></view>
+                                        </block>
+                                        <block wx:else>
+                                            <view class='info-content-item'>
+                                                <view class="title">推广订单数</view>
+                                                <view>{{item.promoteOrderNum}}</view>
+                                            </view>
+                                            <view class='info-content-item'>
+                                                <view class="title">邀请订单数</view>
+                                                <view>{{item.inviteOrderNum}}</view>
+                                            </view>
+                                            <view class='info-content-item'>
+                                                <view class="title">收入/元</view>
+                                                <view>{{item.promoteIncome}}</view>
+                                            </view>
+                                        </block>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </block>
+        <block wx:elif="{{loadStatus.isEmpty&&showList.length}}">
+            <PickerSelect month="{{wxs.setMonth(showList[0].month)}}" catch:handleDataChange="handleDataChange" />
+        </block>
+        <c-load-status loadStatus="{{loadStatus}}" noLoad="{{true}}" showPull="{{false}}" bind:searchReset="Reset" loadSolt="{{['isEmpty']}}" />
+        <view class="bottom-safe" />
+    </scroll-view>
+</view>

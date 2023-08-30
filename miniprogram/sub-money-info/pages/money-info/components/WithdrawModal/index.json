@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "CModal": "/components/CModal",
+        "CModalBtns": "/components/CModal/components/CModalBtns"
+    }
+}

@@ -1,0 +1,4 @@
+<view class="empty-wrap" wx:if="{{isEmpty||isEnd||isError}}">
+    <image src="https://mmbiz.qpic.cn/mmbiz_png/8T1icmGDtgBiaXTVj7RkiajwAqKibb6rbsFAjoDpm74I7AjGmlwgWNCkCbPsbkHsqnFb6J2V5iazn5SYMeF9Wicgw9pw/0?wx_fmt=png" class="empty-img" mode="heightFix"></image>
+    <view class="show-text">{{isError?errorText:isEmpty?emptyText:endText}}</view>
+</view>

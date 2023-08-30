@@ -1,2 +1,1 @@
-<!--pages/user/user.wxml-->
-<text class="text_red">pages/user/user.wxml</text>
+<text>我的页面</text>

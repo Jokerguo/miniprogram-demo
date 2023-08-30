@@ -1,0 +1,4 @@
+<view class="zh-loading">
+    <i class="iconfont icon-jiazai"></i>
+    <view class="zh-desc">进入中...</view>
+</view>

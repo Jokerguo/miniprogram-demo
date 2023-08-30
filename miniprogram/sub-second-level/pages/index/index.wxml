@@ -1,0 +1,40 @@
+<view class="wrapper">
+  <view class="header">
+    <view style="height: 44px"></view>
+    <CSearchBox fixed placeholder='二级联盟名称' searchKey="{{queryStr}}" bind:handleIpt='handleIpt' bind:handleSearch='handleSearch'/>
+  </view>
+  <!-- 分组 -->
+  <view class="group-wrapper">
+    <scroll-view class="scroll-view" scroll-x="true" style="width: 100%">
+      <block wx:for="{{groups}}" wx:key="index">
+        <block wx:if="{{item.groupId !== 0}}">
+          <view class="group-item {{currentGroup === item.groupId ? 'active' : ''}}" bind:tap="selectGroup" data-id="{{item.groupId}}">
+            {{item.groupName}}
+          </view>
+        </block>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- 成员 -->
+  <view class="list-wrapper">
+    <block wx:for="{{memberList}}" wx:key="index">
+      <view class="list-item">
+        <view class="item-header flex justify-between">
+          <view>{{item.list[0].groupName || '无分组'}}</view>
+          <view>共{{item.amount}}个客户</view>
+        </view>
+        <view class="member-wrapper">
+          <block wx:for="{{item.list}}" wx:for-item="mItem" wx:for-index="mIndex" wx:key="mIndex">
+            <view class="member-item b-line" bind:tap="linkTo" mark:item="{{mItem}}">
+              <view class="{{mItem.status ? 'width-80' : 'width-100'}}" data-index="{{index}}" data-m-index="{{mIndex}}">
+                {{mItem.name}}
+              </view>
+              <view wx:if="{{mItem.status}}" class="freeze ml-12">已冻结</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+  <c-load-status loadStatus="{{loadStatus}}" noLoad="{{true}}" showPull="{{false}}" bind:searchReset="getMember" loadSolt="{{['isEmpty']}}"></c-load-status>
+</view>

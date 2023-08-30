@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "c-load-status": "../../../components/CLoadStatus/CLoadStatus",
+        "CSearchBox": "../../../components/CSearchBox",
+        "PickerSelect": "../../../components/PickerSelect/index"
+    },
+    "navigationBarTitleText": "客户信息"
+}

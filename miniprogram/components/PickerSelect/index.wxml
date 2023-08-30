@@ -1,0 +1,11 @@
+<wxs src="/wxs/format.wxs" module="wxs" />
+<picker mode="date" header-text="选择时间" value="{{wxs.setMonth(month)}}" start="2020-01-00" end="{{wxs.getNowMonth()}}" bindchange="handleDataChange" fields="month">
+  <view class="data-wrap">
+    <view class="time">
+      <view class="showMonth">{{showMonth}}</view>
+      <view class="showYear">{{showYear}}</view>
+      <i class="iconfont icon-xiala fs-24" />
+    </view>
+    <view class="right">{{rightText}}</view>
+  </view>
+</picker>

@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "GoPageStrip": "/components/CGoPageStrip",
+        "WithdrawModal": "./components/WithdrawModal"
+    },
+    "navigationBarTitleText": "结算信息"
+}

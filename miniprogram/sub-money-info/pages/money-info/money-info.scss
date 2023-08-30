@@ -1,0 +1,60 @@
+.client-wrap {
+    font-size: 14px;
+
+    .explain-item {
+        color: var(--small-color);
+        line-height: 24px;
+        padding-left: 12px;
+    }
+    .title {
+        margin-top: 8px;
+        line-height: 30px;
+    }
+}
+.money-box {
+    font-size: 14px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    .inner-top {
+        padding-left: 12px;
+
+        height: 100px;
+        flex-shrink: 0;
+        &-left {
+            .desc {
+                margin-bottom: 10px;
+            }
+            .money {
+                font-weight: 500;
+                font-size: 18px;
+                color: var(--red-color);
+            }
+        }
+        &-right {
+            margin-right: 12px;
+            .handle-btn {
+                padding: 8rpx 32rpx;
+                background-color: var(--main-color);
+                color: #fff;
+                width: auto;
+                font-weight: normal;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+        }
+    }
+    .inner-bottom {
+        height: 40px;
+        padding-left: 12px;
+        line-height: 40px;
+        background-color: #e6e6e6;
+    }
+}
+.line-box {
+    .iconfont {
+        color: var(--main-color);
+        font-size: 18px;
+        margin-right: 4px;
+    }
+}

@@ -1,0 +1,11 @@
+<view class="navigator-wrap flex justify-between" style='{{wrapStyle?wrapStyle:""}}' catch:tap='toPage'>
+      <view class="left-con">
+            <slot></slot>
+      </view>
+      <view class="right-con">
+            <view class="right-slot">
+                  <slot name='right'></slot>
+            </view>
+            <i class="right-arrow iconfont icon-xiala" bind:tap="toggleShow"></i>
+      </view>
+</view>

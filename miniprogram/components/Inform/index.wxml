@@ -1,0 +1,5 @@
+<view class="mc-footer">
+  <!-- <text class="footer-item"> 军师联盟 </text> -->
+  <image mode="heightFix" class="logo" src="../../static/images/text-logo.png" alt="" />
+  <text class="footer-item">联盟code：{{code}} 版本号：v{{ version }}</text>
+</view>

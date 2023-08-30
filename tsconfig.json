@@ -19,7 +19,14 @@
     "lib": ["ES2020"],
     "typeRoots": [
       "./typings"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["miniprogram/*"],
+      "@Tool/*": ["miniprogram/tools/*"],
+      "@Api/*": ["miniprogram/api/*"],
+      "@Component/*": ["miniprogram/component/*"],
+    },
   },
   "include": [
     "./**/*.ts"
@@ -27,4 +34,5 @@
   "exclude": [
     "node_modules"
   ],
+
 }

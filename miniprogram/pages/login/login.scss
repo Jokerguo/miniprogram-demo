@@ -1,5 +1,93 @@
-/* pages/login/login.wxss */
+@import '../../static/style/helper.scss';
 
-.xxx{
-  border: 1px solid red;
+.container {
+    padding-top: 60rpx;
+    // .icon {
+    //     border-radius: 50%;
+    //     background-color: $color-blue;
+    //     color: white;
+    //     width: 110rpx;
+    //     height: 110rpx;
+    //     font-size: 36rpx;
+    //     margin: 0 auto;
+    // }
+    .logo {
+        border-radius: 50%;
+        width: 110rpx;
+        height: 110rpx;
+    }
+
+    .title {
+        font-size: 36rpx;
+    }
+
+    .desc {
+        font-size: 24rpx;
+        color: #999;
+    }
+
+    .agree {
+        font-size: 24rpx;
+        margin-top: 100rpx;
+    }
+
+    .btn {
+        margin-top: 100rpx;
+        width: 100%;
+        border-radius: 16rpx;
+        background-color: $color-blue;
+        color: #fff;
+        padding: 24rpx 0;
+        text-align: center;
+        font-weight: 400;        
+    }
+
+    .input {
+        background-color: #fff;
+        border-radius: 16rpx;
+        padding: 24rpx 60rpx 24rpx 24rpx;
+        position: relative;
+        &:placeholder{
+            color: red;
+        }
+        .eye {
+            font-size: 40rpx;
+            padding: 12rpx;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    /* 未选中的 背景样式 */
+    checkbox .wx-checkbox-input {
+        width: 35rpx;
+        height: 35rpx;
+        line-height: 35rpx;
+        border-radius: 50%;
+    }
+
+    /* 选中后的 背景样式  */
+    checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+        border: 1rpx solid $color-blue;
+        background: $color-blue;
+        width: 35rpx;
+        height: 35rpx;
+        line-height: 35rpx;
+    }
+
+    /* 选中后的 对勾样式  */
+    checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+        border-radius: 50%;
+        width: 35rpx;
+        height: 35rpx;
+        line-height: 35rpx;
+        text-align: center;
+        font-size: 30rpx;
+        color: #fff;
+        background: transparent;
+        transform: translate(-50%, -50%) scale(1);
+        -webkit-transform: translate(-50%, -50%) scale(1);
+    }
 }

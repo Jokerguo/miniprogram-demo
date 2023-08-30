@@ -1,0 +1,111 @@
+<wxs module="filters">
+var strcontains = function (str,c) {
+  if (str.indexOf(c) >= 0) {
+   return true
+  }else{
+    return false
+  }
+}
+
+var formatNumber = function(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+var getYear = function(date){
+  return getDate(date).getFullYear()
+}
+var showRadius = function(data,selectDays){
+  if(!selectDays.length)return
+  var date = data.date
+  var reg = getRegExp('-','g')
+  var startTime = getDate(selectDays[0].replace(reg, "/"))
+  var endTime = getDate(selectDays[selectDays.length-1].replace(reg, "/"))
+  var str = ''
+  if(date==startTime.getDate()){
+    str += ' left '
+  }
+  if(date==endTime.getDate()){
+    str += ' right '
+  }
+  return str
+}
+var hindLeftMonth = function(year,month){
+  if(year<2020 || year===2020 && month==1){
+      return 'hind'
+  }
+  return ''
+}
+module.exports = {
+  formatNumber: formatNumber,
+  strcontains: strcontains,
+  getYear:getYear,
+  showRadius:showRadius,
+  hindLeftMonth:hindLeftMonth
+}
+</wxs>
+<view class="header space-between" wx:if="{{showHeader}}">
+  <view class="iconfont" data-id="0" bindtap='dataBefor'>
+    <view class='left-color'></view>
+  </view>
+  <view class="btn flex-center" bindtap="dateSelection">
+    <view class="text">{{selectDay}}</view>
+    <view class=""></view>
+  </view>
+  <view class="iconfont" data-id="1" bindtap='dataBefor'>
+    <view class='right-color'></view>
+  </view>
+</view>
+<view wx:if='{{!calShow}}' class="{{isOpen?'':'calendar-box'}} {{dateShow?'active':''}}" bindtap='handleWrap' data-parent='{{true}}'>
+  <view class="calendar-wrapper {{dateShow?'active':''}}">
+    <view class="calendar-panel">
+      <view class='backtoday' bindtap='backtoday'>回到本月</view>
+      <view class="date-befor {{filters.hindLeftMonth(canlender.year,canlender.month)}}" data-id="0" data-type="month" bindtap='dataBefor'>
+        <view class="iconfont">
+          <view class='iconfont icon-fanhui'></view>
+          <!-- <view class='left-color'></view> -->
+        </view>
+      </view>
+      <view class="calendar-panel-box">
+        <view>{{canlender.year}}年</view>
+        <view>{{filters.formatNumber(canlender.month)}}月</view>
+      </view>
+      <view class="date-after" data-id="1" data-type="month" bindtap='dataBefor'>
+        <view class="iconfont">
+          <!-- <view class='right-color'></view> -->
+          <view class='iconfont icon-jinru'></view>
+        </view>
+      </view>
+      <!-- <view class='backtoday' bindtap='backtoday'>回到今月</view> -->
+      <!-- <view wx:if='{{fasle}}' class='checkalllbtn' bindtap='checkall'>全选</view> -->
+      <view class='iconfont icon-guanbi2 closebtn' bindtap='close'></view>
+    </view>
+    <view class="calendar-header {{mini?'mini':''}}">
+      <view class="header-item">日</view>
+      <view class="header-item">一</view>
+      <view class="header-item">二</view>
+      <view class="header-item">三</view>
+      <view class="header-item">四</view>
+      <view class="header-item">五</view>
+      <view class="header-item">六</view>
+    </view>
+    <view class="calendar-body">
+      <block wx:for="{{canlender.weeks}}" wx:for-item="weeks" wx:for-index="week" wx:key="weeks">
+        <view class="calender-body-date-week">
+          <block wx:for="{{weeks}}" wx:for-item="day" wx:key="day">
+            <view wx:if="{{filters.strcontains(lockDay,canlender.year+'-'+filters.formatNumber(day.month) +'-'+filters.formatNumber(day.date))}}" class="date  date-lock">
+              {{day.date}}
+            </view>
+            <view wx:else class="date {{mini?'mini':''}} {{currentYear >= canlender.year && (canlender.month==day.month && ((nowMonth === day.month && day.date-nowDate <= 0) || (day.month - nowMonth < 0))) || (canlender.month==day.month && currentYear>canlender.year)? '' : 'placeholder'}} {{day.checked && canlender.month == day.month?filters.showRadius(day,selectDays) + 'date-current': ''}}" data-week="{{week}}" data-index="{{index}}" data-ischeck="{{currentYear >= canlender.year && (canlender.month==day.month && ((nowMonth === day.month && day.date-nowDate <= 0) || (day.month - nowMonth < 0))) || (canlender.month==day.month && currentYear>canlender.year)}}" bindtap='selectDay'>
+              {{day.date}}
+              <!-- <view wx:if="{{(readonly && day.checked) || (day.checked && canlender.month != day.month)}}" class="data-circle {{mini?'mini':''}}"></view> -->
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+    <view wx:if="{{!readonly}}" class="packup flex flex-between">
+      <view class="packup-button" bindtap='clear'>清空</view>
+      <view class="packup-button border-left" bindtap='packup'>确定</view>
+    </view>
+  </view>
+</view>

@@ -1,8 +1,13 @@
-<view>
-  <text class="xxx">pages/login/login.wxml</text>
-  <navigator open-type="navigate" url="/sub-demo/pages/index/index" bind:tap="handleEvent">分包demo</navigator>
-  <navigator open-type="switchTab" url="/pages/index/index">首页</navigator>
-  <navigator open-type="switchTab" url="/pages/user/user">log</navigator>
-  <button bind:tap="login">登录</button>
-  <i class="iconfont icon-rename"></i>
+<view class="container">
+  <!-- <view class="icon fxy--center">军</view> -->
+  <view class="fxy--center">
+    <image class="logo" mode="widthFix" src="../../static/images/logo.jpg"></image>
+  </view>
+  <view class="title mt-12 t-center">军师联盟</view>
+  <view class="desc mt-12 t-center">登录军师联盟，开启推广任务</view>
+  <input class="input mt-24" placeholder-style="color:#999" maxlength="30" type="text" placeholder="请输入军师联盟账号" model:value="{{userName}}" />
+  <input class="input mt-24" placeholder-style="color:#999" maxlength="30" type="text" placeholder="请输入密码" password="{{!showPassword}}" model:value="{{password}}" bindinput="handleInput" focus="{{focus}}">
+   <i class="iconfont eye icon-{{showPassword ? 'kejian' : 'bukejian'}}" catch:tap="toggleShow"></i>
+  </input>
+  <button class="btn mt-12" bind:tap="handleLogin" loading="{{isLoading}}">立即登录</button>
 </view>

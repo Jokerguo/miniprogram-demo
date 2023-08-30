@@ -1,0 +1,6 @@
+<view class="card share-wrapper">
+  <view class="image-wrapper">
+    <image class="img" mode="widthFix" src="{{currentItem.link}}" show-menu-by-longpress bind:tap="viewImg"></image>
+  </view>
+  <view class="title">{{currentItem.title}}</view>
+</view>

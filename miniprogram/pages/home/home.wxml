@@ -1,0 +1,96 @@
+<wxs src="/wxs/format.wxs" module="wxs" />
+<import src="home.skeleton.wxml"/>
+
+<template is="skeleton" wx:if="{{loading}}" />
+<view class="container" wx:else>
+  <view class="header flex justify-between">
+    <view class="info">
+      <view class="name {{showName ? '' : 'long-name'}}" bind:tap="toggleShowName">
+        {{userInfo.name}}
+      </view>
+      <view class="desc">
+        <text>{{userInfo.parentCode ? '二级联盟' : '一级联盟'}}</text>
+        <text class="group" wx:if="{{userInfo.parentCode}}">分组：{{userInfo.groupName}}</text>
+      </view>
+    </view>
+    <i class="iconfont icon-shezhi setting" bind:tap="linkTo" data-url="/sub-user-setting/pages/index/index"></i>
+  </view>
+  <!-- 收入模块 -->
+  <view class="card mt-12 income-info">
+    <view class="desc">今日订单共{{incomeInfo.todayOrderCount}}单，赚了</view>
+    <view class="money">￥{{incomeInfo.todayIncome}}</view>
+    <view class="b-line bottom-info flex justify-between">
+      <view class="flex">
+        较昨日
+        <view class="{{wxs.compareColor(incomeInfo.incomeGrow)}}">{{ wxs.compare(incomeInfo.incomeGrow) }} </view>
+         </view>
+      <view class="pr-12" bind:tap="linkTo" data-url="/sub-money-info/pages/money-info/money-info">
+        <block wx:if="{{userInfo.parentCode}}">总收入 {{incomeInfo.allIncome}} 元</block>
+        <block wx:else>可提现 {{incomeInfo.balance}} 元</block>
+        <i class="iconfont icon-jinru"></i>
+      </view>
+    </view>
+    <view class="member-count flex justify-between" bind:tap="linkTo" data-url="{{userInfo.parentCode ? '/sub-user-info/pages/client-info/client-info' : '/sub-second-level/pages/index/index'}}">
+      <view class="title">
+        <i class="iconfont icon-{{userInfo.parentCode ? 'yonghu' : 'lianmeng'}}  c-blue"></i>
+        {{userInfo.parentCode ? '客户信息' : '二级联盟'}}
+      </view>
+      <view class="count pr-12">
+        <block wx:if="{{userInfo.parentCode}}">共 {{incomeInfo.userCount}} 个客户信息</block>
+        <block wx:else>{{incomeInfo.memberCount}} 个二级联盟</block>
+        <i class="iconfont icon-jinru"></i>
+      </view>
+    </view>
+  </view>
+  <!-- 数据模块 -->
+  <view class="card mt-12 promote-info">
+    <view class="title flex justify-between pr-12 pb-12">
+      <view>
+        <i class="iconfont icon-{{userInfo.parentCode ? 'jilu' : 'shuju'}} c-blue"></i>
+        {{userInfo.parentCode ? '客户数据' : '二级联盟数据'}}
+      </view>
+      <view bind:tap="selectType" class="allow">
+        {{types[currentType]}}
+        <i class="iconfont icon-xiala fs-24 {{isSelecting ? 'rotate' : ''}}"></i>
+      </view>
+    </view>
+    <view class="info-wrapper  pr-12">
+      <block wx:for="{{dataList}}" wx:key="index">
+        <view class='item' bind:tap="handleLink" data-index="{{index}}">
+          <view class="title">{{item.title}}</view>
+          <view class="count">{{promoteInfo[item.countKey]}}</view>
+          <view class="wrap flex justify-center align-center" hidden="{{currentType === 2}}">
+            {{currentType === 0 ? '较昨日' : '较上月'}}
+            <view class="{{wxs.compareColor(promoteInfo[item.diffKey])}} compare-count">
+              {{ wxs.compare(promoteInfo[item.diffKey]) }}
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 推广模块 -->
+  <view class="card mt-12 task">
+    <view class="title fs-14 flex justify-between pr-12 pb-12">
+      <view>
+        <i class="iconfont icon-bangding c-blue"></i>
+        推广任务
+      </view>
+    </view>
+    <view class="wrapper">
+      <block wx:for="{{taskQrcodeList}}" wx:key="index">
+        <view class="item flex mb-12">
+          <view class="qrcode">
+            <image class="img" mode="widthFix" src="{{item.link}}" bind:tap="viewImg" data-link="{{item.link}}"></image>
+          </view>
+          <view class="ml-12 item-right flex justify-between align-center pr-12 b-line flex-1">
+            <view class="title">{{item.title}}</view>
+            <button open-type="share" class="share" data-index="{{index}}">分享</button>
+            </view>
+        </view>
+      </block>
+ 
+    </view>
+  </view>
+  <Inform></Inform>
+</view>

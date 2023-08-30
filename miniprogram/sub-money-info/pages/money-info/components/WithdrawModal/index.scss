@@ -1,0 +1,40 @@
+//提现确认弹窗
+.confirm_wrap {
+    font-size: 14px;
+    color: #333;
+    .list_wrap > .item {
+        display: flex;
+        margin: 10px 0;
+        .item_label {
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+        .item_value {
+            text-align: left;
+            flex: 1;
+        }
+        .money{
+            color: var(--red-color);
+        }
+    }
+    .desc_wrap {
+        padding: 12px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        margin: 10px 0;
+        .item {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            font-size: 12px;
+            .dot {
+                flex-shrink: 0;
+                width: 4px;
+                height: 4px;
+                margin-right: 4px;
+                background-color: #333;
+                border-radius: 50%;
+            }
+        }
+    }
+}

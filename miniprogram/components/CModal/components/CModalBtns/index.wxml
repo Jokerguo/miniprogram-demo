@@ -1,0 +1,4 @@
+<view class="handles_wrap">
+    <view class="cancel btn" bind:tap="handleCancel">取消</view>
+    <view class="confirm btn" bind:tap="handleConfirm">确认</view>
+</view>

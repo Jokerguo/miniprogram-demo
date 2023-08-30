@@ -1,0 +1,7 @@
+<view class="search-wrap {{fixed?'fixed':''}}">
+    <view class="search-content">
+        <i class="iconfont icon-fangdajing icon-search" />
+        <input class="ipt-search" value="{{searchKey}}" bindinput="handleIpt" bindblur="blur" placeholder="{{placeholder}}" placeholder-class="ipt-placeholder" />
+        <i class="iconfont icon-guanbi-tianchong icon-clear" wx:if="{{searchKey}}"  catch:tap='clearVal'></i>
+    </view>
+</view>

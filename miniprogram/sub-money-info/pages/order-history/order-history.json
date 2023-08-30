@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "GoPageStrip": "/components/CGoPageStrip",
+        "CModal": "/components/CModal",
+        "Calendar": "/components/calendar/calendar",
+        "CScroll": "/components/CScroll/index",
+        "c-load-status": "../../../components/CLoadStatus/CLoadStatus"
+    },
+    "navigationBarTitleText": "军师联盟"
+}

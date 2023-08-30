@@ -1,5 +1,4 @@
 // 打点
-
 const uba = (option: { fid: string; params?: any }) => {
     try {
         let pages = getCurrentPages();

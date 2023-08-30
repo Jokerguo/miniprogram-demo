@@ -1,0 +1,16 @@
+function getNowMonth() {
+    var now = getDate();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    return year + '-' + month;
+}
+function setMonth(value) {
+    if (!value) return '';
+    value += '';
+    var res = value.replace(getRegExp('(d+)月(d+)年', 'g'), '$2-$1');
+    return res;
+}
+module.exports = {
+    getNowMonth: getNowMonth,
+    setMonth: setMonth,
+};

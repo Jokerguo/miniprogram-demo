@@ -1,0 +1,12 @@
+<view wx:if="{{!destoryModal}}" hidden="{{!modalOpen}}" class="{{!_show?'hide':'show'}}" style="{{wrapStyle}}">
+    <view class="model-mask" bind:tap="$tapMask" capture-catch:touchmove="$catch"></view>
+    <view class="model-popout" style="{{bodyStyle}}">
+        <view wx:if="{{title}}" class="model-title" style="{{titleStyle}}">{{title}}</view>
+        <view class="model-content" style="{{contentStyle}}">
+            <slot></slot>
+        </view>
+        <view class="model-action">
+            <slot name="btn"></slot>
+        </view>
+    </view>
+</view>

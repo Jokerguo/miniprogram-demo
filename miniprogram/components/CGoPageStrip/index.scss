@@ -1,0 +1,20 @@
+.navigator-wrap {
+    height: 48px;
+    line-height: 48px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    .left-con {
+    }
+    .right-con {
+        .right-arrow {
+            display: none;
+        }
+        .right-slot:empty + .right-arrow {
+            transform: rotate(-90deg);
+            display: block;
+            color: var(--small-color);
+        }
+    }
+}

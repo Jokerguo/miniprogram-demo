@@ -1,0 +1,70 @@
+@import './popMixins.wxss';
+
+.model-popout {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+
+    width: 300px;
+    margin: -20px auto 0;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    overflow: hidden;
+    font-size: 17px;
+}
+
+.model-title {
+    color: black;
+    margin: 50rpx 24rpx 0;
+    font-weight: 600;
+}
+.model-content {
+    position: relative;
+    padding: 76rpx 24rpx 48rpx;
+    line-height: 1.5;
+    color: #9d9d9d;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    max-height: 700rpx;
+}
+.model-title + .model-content {
+    padding: 30rpx 24rpx 48rpx;
+}
+.model-action {
+    display: flex;
+    text-align: center;
+}
+
+.show > .model-popout {
+    animation: fadeIn 300ms ease forwards;
+}
+.hide > .model-popout {
+    animation: fadeOut 300ms ease forwards;
+}
+
+@media screen and (max-width: 320px) {
+    .model-popout {
+        width: 280px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .model-popout {
+        width: 320px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .model-title {
+        margin: 25px 28px 0;
+    }
+    .model-content {
+        padding: 38px 28px 24px;
+    }
+    .model-title + .model-content {
+        padding: 15px 24px 24px;
+    }
+}

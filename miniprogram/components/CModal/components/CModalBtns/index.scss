@@ -1,0 +1,19 @@
+.handles_wrap {
+    display: flex;
+    justify-content: space-evenly;
+    .btn {
+        width: 100px;
+        height: 30px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 30px;
+    }
+    .cancel {
+        border: 1px solid var(--main-color);
+        color: var(--main-color);
+    }
+    .confirm {
+        background: var(--main-color);
+        color: #fff;
+    }
+}

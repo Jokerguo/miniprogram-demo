@@ -1,0 +1,76 @@
+<view class="client-wrap">
+    <view
+        class="money-box fd--column"
+        wx:if="{{level===1}}"
+    >
+        <view class="inner-top flex justify-center">
+            <view class="inner-top-left fd--column justify-center flex flex-1">
+                <view class="desc">可提现/元</view>
+                <view class="money">￥{{amountInfo.canCarryPrice}}</view>
+            </view>
+            <view class="inner-top-right flex align-self-center">
+                <button
+                    class="handle-btn"
+                    bind:tap="handleWithdraw"
+                >提现
+                </button>
+            </view>
+        </view>
+        <view class="inner-bottom">累计赚了￥{{amountInfo.totalPrice}}</view>
+    </view>
+    <view
+        class="money-box fd--column"
+        wx:else
+    >
+        <view class="inner-top flex justify-center">
+            <view class="inner-top-left fd--column justify-center flex flex-1">
+                <view class="desc">累计赚了/元</view>
+                <view class="money">￥{{amountInfo.totalPrice}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="explain-item title">提现说明</view>
+    <block wx:if="{{level===1}}">
+        <view class="explain-item">1. 单次提现金额不得超过50000元</view>
+        <view class="explain-item">2. 请核对收款账户后再提交，人工审核完成后到账</view>
+    </block>
+    <block wx:else>
+        <view class="explain-item">1. 二级联盟暂不支持线上提现，提现请与上级协商</view>
+    </block>
+    <view class="line-box">
+        <GoPageStrip
+            url='/sub-money-info/pages/income-history/income-history'
+            wrapStyle="margin-top:10px"
+        >
+            <view class="flex align-center">
+                <i
+                    class="iconfont icon-jinbi"
+                    bind:tap="toggleShow"
+                />
+                <view>收入明细</view>
+            </view>
+        </GoPageStrip>
+        <GoPageStrip
+            url='/sub-money-info/pages/withdraw-history/withdraw-history'
+            wrapStyle="margin-top:10px"
+            wx:if="{{level===1}}"
+        >
+            <view class="flex align-center">
+                <i
+                    class="iconfont icon-jilu"
+                    bind:tap="toggleShow"
+                />
+                <view>提现记录</view>
+            </view>
+        </GoPageStrip>
+    </view>
+    <WithdrawModal
+        bind:confirm='handleConfirm'
+        bind:cancel='closeOrderCodeShow'
+        showModal="{{confirmModal}}"
+        settleAccount="{{settleAccount}}"
+        amountInfo="{{amountInfo}}"
+    />
+</view>
+
+

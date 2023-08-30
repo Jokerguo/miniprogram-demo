@@ -1,0 +1,14 @@
+.data-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .time {
+        margin: 10px 0;
+        display: flex;
+        align-items: flex-end;
+        .showMonth {
+            font-size: 16px;
+            margin-right: 2px;
+        }
+    }
+}

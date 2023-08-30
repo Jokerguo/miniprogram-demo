@@ -1,0 +1,35 @@
+page {
+    padding: 0;
+}
+.client-wrap {
+    font-size: 14px;
+    .content-scroll {
+        overflow: scroll; /*必须写这一条*/
+        height: 100vh;
+        box-sizing: border-box;
+        .scroll-item {
+            padding: 0 12px;
+            background-color: #fff;
+            margin-top: 12px;
+            .month {
+                margin: 10px 0;
+            }
+            .scroll-header {}
+            .infos {
+                > .info-item {
+                    border-top: 1px solid var(--smaller-color);
+                    padding: 5px 0;
+                    box-sizing: border-box;
+                    .info-date{
+                        color: #999;
+                    }
+                }
+            }
+        }
+        .bottom-safe {
+            // margin-bottom: calc(constant(safe-area-inset-bottom) + 32rpx);
+            height: calc(constant(safe-area-inset-bottom) + 200rpx);
+            height: env(safe-area-inset-bottom);
+        }
+    }
+}

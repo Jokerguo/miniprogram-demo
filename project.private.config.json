@@ -4,5 +4,68 @@
     "setting": {
         "compileHotReLoad": true,
         "urlCheck": false
-    }
+    },
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "",
+                    "pathName": "user-info/pages/client-info",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "客户信息",
+                    "pathName": "sub-user-info/pages/client-info/client-info",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "结算信息",
+                    "pathName": "sub-money-info/pages/money-info/money-info",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "sub-share/pages/qrcodeInvite/qrcodeInvite",
+                    "query": "index=0",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "sub-money-info/pages/income-history/income-history",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "sub-user-info/pages/client-info/client-info",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "sub-money-info/pages/order-history/order-history",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "sub-money-info/pages/withdraw-history/withdraw-history",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    },
+    "libVersion": "2.27.2"
 }

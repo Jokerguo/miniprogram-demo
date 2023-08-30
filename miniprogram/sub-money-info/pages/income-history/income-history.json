@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "CTab": "/components/CTab",
+        "c-load-status": "../../../components/CLoadStatus/CLoadStatus",
+        "PickerSelect": "../../../components/PickerSelect/index"
+
+    },
+    "navigationBarTitleText": "收入明细"
+}

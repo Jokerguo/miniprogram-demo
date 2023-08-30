@@ -1,0 +1,91 @@
+<wxs
+    src="/wxs/format.wxs"
+    module="wxs"
+/>
+<view class="client-wrap">
+    <CTab
+        titleArr="{{titleArr}}"
+        topBorder="{{true}}"
+        currentTab="{{currentTab}}"
+        bind:change="tabChange"
+        showNum="{{isLoading}}"
+        left='50px'
+    />
+    <scroll-view
+        class="content-scroll"
+        scroll-y
+        enable-flex
+        bindscrolltolower='pullBottomLoad'
+        refresher-enabled
+        refresher-default-style='black'
+        bindrefresherrefresh='pullRefresh'
+        refresher-triggered="{{refreshStatus}}"
+        lower-threshold='200'
+    >
+        <block wx:if="{{showList.length&&!loadStatus.isEmpty}}">
+            <block
+                wx:for="{{showList}}"
+                wx:for-item="infoList"
+                wx:key="index"
+            >
+                <block wx:if="{{infoList && infoList.list &&  infoList.list.length }}">
+                    <!-- 月份 -->
+                    <view class="scroll-item">
+                        <view class="scroll-header">
+                            <PickerSelect
+                                month="{{infoList.month}}"
+                                rightText="已提现:￥{{infoList.count}}"
+                                catch:handleDataChange="handleDataChange"
+                            />
+                        </view>
+                        <view
+                            class="scroll-content"
+                            data-index='{{index}}'
+                        >
+                            <view class="infos">
+                                <block
+                                    wx:for="{{infoList.list}}"
+                                    wx:key="id"
+                                >
+                                    <view class="info-item">
+                                        <view class="left">
+                                            <view class="withdrawTo">
+                                                提现到:{{item.withdrawAccount}}
+                                            </view>
+                                            <view class="status">
+                                                {{wxs.getWithdrawStatus(item.withdrawStatus,item.content)}}
+                                            </view>
+                                        </view>
+                                        <view class="right {{item.withdrawStatus===3?'line':''}}">
+                                            <view>-{{item.withdrawAmount}}</view>
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+        </block>
+        <block wx:elif="{{loadStatus.isEmpty&&showList.length}}">
+            <view class="scroll-item">
+                <view class="scroll-header">
+                    <PickerSelect
+                        month="{{showList[0].month}}"
+                        rightText="已提现:￥{{showList[0].count}}"
+                        catch:handleDataChange="handleDataChange"
+                    />
+                </view>
+            </view>
+        </block>
+        <c-load-status
+            loadStatus="{{loadStatus}}"
+            noLoad="{{true}}"
+            showPull="{{false}}"
+            bind:searchReset="Reset"
+        />
+        <view class="bottom-safe" />
+    </scroll-view>
+</view>
+
+

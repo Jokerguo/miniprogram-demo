@@ -1,0 +1,87 @@
+<!--
+此文件为开发者工具生成，生成时间: 2022/11/23下午3:15:44
+使用方法：
+在 D:\gds\project\jslm\miniprogram\pages\home\home.wxml 引入模板
+
+```
+<import src="home.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 D:\gds\project\jslm\miniprogram\pages\home\home.wxss 中引入样式
+```
+@import "./home.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view class="header flex justify-between">
+        <view class="info">
+          <view class="name long-name sk-transparent sk-text-14-2857-617 sk-text">
+            zzc
+          </view>
+          <view class="desc">
+            <text class="sk-transparent sk-text-14-2857-907 sk-text">一级联盟</text>
+          </view>
+        </view>
+        <i class="iconfont icon-shezhi setting sk-pseudo sk-pseudo-circle" data-url="/sub-user-setting/pages/index/index"></i>
+      </view>
+      <view class="card mt-12 income-info">
+        <view class="money sk-transparent sk-text-14-2857-263 sk-text">￥0.0</view>
+        <view class="b-line bottom-info flex justify-between" data-url="/sub-money-info/pages/money-info/money-info">
+          <view class="flex sk-transparent">
+            二级联盟数据
+          </view>
+    
+        </view>
+        <view class="member-count flex justify-between" data-url="/sub-second-level/pages/index/index">
+          <view class="count pr-12 sk-transparent">33 个二级联盟
+          </view>
+        </view>
+      </view>
+      <view class="card mt-12 promote-info">
+        <view class="title flex justify-between pr-12 pb-12">
+          <view class="sk-transparent">
+            二级联盟数据
+          </view>
+        </view>
+        <view class="info-wrapper pr-12">
+       
+          <view class="item" data-index="0">
+            <view class="title sk-transparent sk-text-14-2857-189 sk-text" style="background-position-x: 50%;">数</view>
+            <view class="count sk-transparent sk-text-14-2857-286 sk-text" style="background-position-x: 50%;">0</view>
+            <view class="wrap flex justify-center align-center sk-transparent">
+              较昨日
+              <view class="sk-transparent sk-opacity">
+                --
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="card mt-12 task">
+        <view class="title fs-14 flex justify-between pr-12 pb-12">
+          <view class="sk-transparent">
+            <i class="iconfont icon-jijian c-blue sk-pseudo sk-pseudo-circle"></i>
+            推广任务
+          </view>
+        </view>
+        <view class="wrapper">
+          <view class="item flex mb-12">
+            <view class="qrcode">
+              <image class="img sk-image" data-link="https://wxapi.fhd001.com/msabase/qrcode?width=240&amp;height=240&amp;needLogo=false&amp;content=http%3A%2F%2Ft.fhd001.com%2Finvite%2Fsub-supplementExpress%2Fpages%2FsupplementExpress%2FsupplementExpress%3Fcode%3Dundefined"
+                mode="widthFix"></image>
+            </view>
+            <view class="ml-12 item-right flex justify-between align-center pr-12 b-line flex-1">
+              <view class="title sk-transparent sk-text-14-2857-23 sk-text">补充快递</view>
+              <button class="share sk-button sk-pseudo sk-pseudo-circle" data-index="0" open-type="share">分享</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
